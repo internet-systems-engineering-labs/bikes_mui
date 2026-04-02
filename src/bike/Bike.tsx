@@ -6,16 +6,16 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { Link as RouterLink, useParams } from 'react-router-dom';
 import Navbar from '../components/Navbar';
-import structures from '../data';
+import bikes from '../data';
 
-function Building() {
+function Bike() {
     const { id } = useParams();
     const parsedId = Number(id);
-    const buildingIndex =
-        Number.isInteger(parsedId) && parsedId >= 0 && parsedId < structures.length
+    const bikeIndex =
+        Number.isInteger(parsedId) && parsedId >= 0 && parsedId < bikes.length
             ? parsedId
             : 0;
-    const building = structures[buildingIndex];
+    const bike = bikes[bikeIndex];
 
     return (
         <Box>
@@ -29,7 +29,7 @@ function Building() {
                     >
                         ГЛАВНАЯ
                     </Link>
-                    <Typography color="text.primary">{building.title}</Typography>
+                    <Typography color="text.primary">{bike.title}</Typography>
                 </Breadcrumbs>
 
                 <Stack spacing={4} alignItems="center">
@@ -40,13 +40,13 @@ function Building() {
                             color: 'text.secondary',
                         }}
                     >
-                        {building.title}
+                        {bike.title}
                     </Typography>
 
                     <Box
                         component="img"
-                        src={building.img}
-                        alt={building.title}
+                        src={bike.img}
+                        alt={bike.title}
                         sx={{
                             width: '100%',
                             maxWidth: 520,
@@ -64,7 +64,7 @@ function Building() {
                             width: '100%',
                         }}
                     >
-                        {building.description.map((text, index) => (
+                        {bike.description.map((text, index) => (
                             <Typography
                                 key={index}
                                 variant="body1"
@@ -80,4 +80,4 @@ function Building() {
     );
 }
 
-export default Building;
+export default Bike;

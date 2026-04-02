@@ -1,4 +1,4 @@
-const buildings = [
+const bikes = [
     {
         "id": 1,
         "Название": "Trek 820 - 2016",
@@ -513,4 +513,4 @@ const buildings = [
     }
 ];
 
-export default buildings;
+export default bikes;

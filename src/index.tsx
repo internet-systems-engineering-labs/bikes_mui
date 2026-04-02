@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import List from "./list/List";
 import Main from "./main/Main";
-import Building from "./building/Building";
+import Bike from "./bike/Bike";
 import Chart from './charts/Chart';
 import Testing from './testing/Testing';
 import { Provider } from 'react-redux';
@@ -24,8 +24,8 @@ const router = createBrowserRouter([
     element: <List />,
   },
   {
-    path: "/building/:id",
-    element: <Building />,
+    path: "/bike/:id",
+    element: <Bike />,
   },
   {
     path: "/charts",

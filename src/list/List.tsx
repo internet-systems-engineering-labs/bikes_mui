@@ -1,12 +1,12 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import BuildingsGrid from "./components/BuildingsGrid";
+import BikesGrid from "./components/BikesGrid";
 
 function List() {
     return (
         <div>
             <Navbar active="list" />
-            <BuildingsGrid />
+            <BikesGrid />
             <Footer />
         </div>
     );

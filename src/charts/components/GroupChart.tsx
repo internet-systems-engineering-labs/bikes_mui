@@ -4,7 +4,6 @@ import { tGroup } from "../groupdata";
 import React from 'react';
 import SettingChart from './SettingChart';
 import { LineChart } from '@mui/x-charts/LineChart';
-import { axisClasses } from '@mui/x-charts/ChartsAxis';
 
 type GroupChartProps = {
     data: tGroup;

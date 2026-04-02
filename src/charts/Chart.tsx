@@ -6,7 +6,7 @@ import FormControl from '@mui/material/FormControl';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import * as React from 'react';
-import {years, countries, types } from "./groupdata";
+import { years, brands, categories } from "./groupdata";
 import GroupGrid from './components/GroupGrid';
 import GroupChart from './components/GroupChart';
 
@@ -15,18 +15,18 @@ type tSelect = "Бренд" | "Год" | "Категория";
 function Chart() {
     const [group, setGroup] = React.useState<tSelect>("Бренд");
 
-    const [groupData, setGroupData] = React.useState(countries);
+    const [groupData, setGroupData] = React.useState(brands);
 
     const handleChange = (event: SelectChangeEvent) => {
         const value = event.target.value as tSelect;
         setGroup(value);
 
         if (value === "Бренд") {
-            setGroupData(countries);
+            setGroupData(brands);
         } else if (value === "Год") {
             setGroupData(years);
         } else {
-            setGroupData(types);
+            setGroupData(categories);
         }
     }
 

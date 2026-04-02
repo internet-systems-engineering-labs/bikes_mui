@@ -9,13 +9,13 @@ import { styled } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 
 interface ComponentProps {
-    building: {
+    bike: {
         img: string,
         title: string,
         description: string[],
     };
     cardNumber: number;
-    buildingId: number;
+    bikeId: number;
 }
 
 const StyledTypography = styled(Typography)(({ theme }) => ({
@@ -24,7 +24,7 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
     marginBottom: theme.spacing(1.5),
 }));
 
-function BuildCard({ building, cardNumber, buildingId } : ComponentProps) {
+function BikeCard({ bike, cardNumber, bikeId } : ComponentProps) {
     const isOddCard = cardNumber % 2 !== 0;
 
     return (
@@ -36,16 +36,16 @@ function BuildCard({ building, cardNumber, buildingId } : ComponentProps) {
         >
             <CardMedia
                 component="img"
-                alt={ building.title }
-                image={ building.img }
+                alt={ bike.title }
+                image={ bike.img }
                 sx={{ width: 220 }}
             />
             <Box sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
                 <CardContent>
                     <Typography gutterBottom variant="h5" >
-                        { building.title }
+                        { bike.title }
                     </Typography>
-                    { building.description.map((item, ind) => (
+                    { bike.description.map((item, ind) => (
                         <StyledTypography key={ind} variant="body2">
                             { item }
                         </StyledTypography>
@@ -56,7 +56,7 @@ function BuildCard({ building, cardNumber, buildingId } : ComponentProps) {
                 >
                     <Button
                         component={Link}
-                        to={`/building/${buildingId}`}
+                        to={`/bike/${bikeId}`}
                         size="small"
                     >
                         Подробнее
@@ -67,4 +67,4 @@ function BuildCard({ building, cardNumber, buildingId } : ComponentProps) {
     )
 }
 
-export default BuildCard;
+export default BikeCard;

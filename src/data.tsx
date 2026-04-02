@@ -9,7 +9,7 @@ import Image8 from './images/image8.jpg';
 import Image9 from './images/image9.jpg';
 import Image10 from './images/image10.jpg';
 
-const structures = [
+const bikes = [
     {
         img: Image1,
         title: "Trek 820", 
@@ -93,4 +93,4 @@ const structures = [
  
 ];
 
-export default structures;
+export default bikes;

@@ -1,10 +1,10 @@
-import buildings from "../table";
+import bikes from "../table";
 import { DataGrid, GridRowsProp, GridColDef } from "@mui/x-data-grid";
 import { ruRU } from '@mui/x-data-grid/locales';
 import Container from '@mui/material/Container';
 
-function BuildingsGrid() {
-    const rows: GridRowsProp = buildings;
+function BikesGrid() {
+    const rows: GridRowsProp = bikes;
     const columns: GridColDef[] = [
         { field: 'Название', headerName: 'Название', flex: 1},
         { field: 'Бренд', flex: 0.5},
@@ -25,4 +25,4 @@ function BuildingsGrid() {
     );
 }
 
-export default BuildingsGrid;
+export default BikesGrid;
