@@ -10,10 +10,10 @@ import {years, countries, types } from "./groupdata";
 import GroupGrid from './components/GroupGrid';
 import GroupChart from './components/GroupChart';
 
-type tSelect = "Страна" | "Год" | "Тип";
+type tSelect = "Бренд" | "Год" | "Категория";
 
 function Chart() {
-    const [group, setGroup] = React.useState<tSelect>("Страна");
+    const [group, setGroup] = React.useState<tSelect>("Бренд");
 
     const [groupData, setGroupData] = React.useState(countries);
 
@@ -21,7 +21,7 @@ function Chart() {
         const value = event.target.value as tSelect;
         setGroup(value);
 
-        if (value === "Страна") {
+        if (value === "Бренд") {
             setGroupData(countries);
         } else if (value === "Год") {
             setGroupData(years);
@@ -42,9 +42,9 @@ function Chart() {
                     label="Группировать по"
                     onChange={ handleChange }
                 >
-                    <MenuItem value="Страна"> Стране </MenuItem>
+                    <MenuItem value="Бренд"> Бренду </MenuItem>
                     <MenuItem value="Год"> Году </MenuItem>
-                    <MenuItem value="Тип"> Типу </MenuItem>
+                    <MenuItem value="Категория"> Категории </MenuItem>
                 </Select>
             </FormControl>
             </Box>

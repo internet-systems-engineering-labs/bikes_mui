@@ -14,76 +14,76 @@ export const quiz: tQuizzes = [
     {
         "id": 1,
         "type": "M",
-        "title": "Сопоставьте сооружение и город, в котором оно расположено.",
+        "title": "Сопоставьте модель велосипеда и бренд, который её выпускает.",
         "tasks": [
             {
-                "question": "Башня Аль-Хамра",
-                "answer": "Кувейт"
+                "question": "Trek Fuel EX 8 29 - 2016",
+                "answer": "Trek"
             },
             {
-                "question": "Башня CITIC",
-                "answer": "Гуанчжоу"
+                "question": "Surly Straggler - 2016",
+                "answer": "Surly"
             },
             {
-                "question": "Телебашня «Коктобе»",
-                "answer": "Алматы"
+                "question": "Electra Townie Original 21D - 2016",
+                "answer": "Electra"
             },
             {
-                "question": "Си-Эн Тауэр",
-                "answer": "Торонто"
+                "question": "Ritchey Timberwolf Frameset - 2016",
+                "answer": "Ritchey"
             },
         ]
     },
     {
         "id": 2,
         "type": "M",
-        "title": "Сопоставьте сооружение и его высоту.",
+        "title": "Сопоставьте модель велосипеда и категорию, к которой она относится.",
         "tasks": [
             {
-                "question": "Tokyo Skytree",
-                "answer": "634"
+                "question": "Trek Conduit+ - 2016",
+                "answer": "Electric Bikes"
             },
             {
-                "question": "Бурдж-Халифа",
-                "answer": "838"
+                "question": "Surly Straggler 650b - 2016",
+                "answer": "Cyclocross Bicycles"
             },
             {
-                "question": "Эмпайр-стейт-билдинг",
-                "answer": "448.7"
+                "question": "Electra Cruiser 1 (24-Inch) - 2016",
+                "answer": "Cruisers Bicycles"
             },
             {
-                "question": "Останкинская башня",
-                "answer": "540.1"
+                "question": "Electra Girl's Hawaii 1 (20-inch) - 2015/2016",
+                "answer": "Children Bicycles"
             },
             {
-                "question": "Lotte World Tower",
-                "answer": "555"
+                "question": "Trek Domane SL 6 - 2017",
+                "answer": "Road Bikes"
             },
         ]
     },
     {
         "id": 3,
         "type": "S",
-        "title": "Отсортировать здания по убыванию их высоты.",
+        "title": "Отсортируйте велосипеды по возрастанию цены.",
         "tasks": [
             {
-                "question": "Бурдж-Халифа",
+                "question": "Electra Cruiser 1 (24-Inch) - 2016",
                 "answer": "1"
             },
             {
-                "question": "Tokyo Skytree",
+                "question": "Trek 820 - 2016",
                 "answer": "2"
             },
             {
-                "question": "Lotte World Tower",
+                "question": "Surly Wednesday Frameset - 2016",
                 "answer": "3"
             },
             {
-                "question": "Останкинская башня",
+                "question": "Surly Straggler - 2016",
                 "answer": "4"
             },
             {
-                "question": "Эмпайр-стейт-билдинг",
+                "question": "Trek Fuel EX 8 29 - 2016",
                 "answer": "5"
             },
         ]

@@ -12,9 +12,9 @@ type GroupChartProps = {
 
 function GroupChart({ data }: GroupChartProps) {
     const [series, setSeries] = React.useState({
-        'Максимальная высота': true,
-        'Средняя высота': false,
-        'Минимальная высота': false,
+        'Максимальная цена': true,
+        'Средняя цена': false,
+        'Минимальная цена': false,
     });
 
     const isSingleSeries = Object.values(series).filter(Boolean).length === 1;
@@ -31,7 +31,7 @@ function GroupChart({ data }: GroupChartProps) {
 
     const chartSetting = {
         yAxis: [{
-            label: 'Высота (м)',
+            label: 'Цена',
         }],
         height: 400,
     };

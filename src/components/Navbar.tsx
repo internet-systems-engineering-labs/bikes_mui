@@ -79,7 +79,7 @@ function Navbar({ active }: ComponentProps) {
             <Container maxWidth="xl">
                 <StyledToolbar>
                     <Typography variant="h6" sx={{ color: '#5d8aa8' }}>
-                        Самые высокие здания и сооружения
+                        Велосипеды для города, трассы и бездорожья
                     </Typography>
 
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
@@ -90,7 +90,7 @@ function Navbar({ active }: ComponentProps) {
                         </Link>
                         <Link to="/list">
                             <NavbarButtonItem active={active === 'list'}>
-                                Список зданий
+                                Список велосипедов
                             </NavbarButtonItem>
                         </Link>
                         <Link to="/charts">
@@ -133,7 +133,7 @@ function Navbar({ active }: ComponentProps) {
                                 </Link>
                                 <Link to="/list">
                                     <NavbarDrawerItem active={active === 'list'}>
-                                        Список зданий
+                                        Список велосипедов
                                     </NavbarDrawerItem>
                                 </Link>
                                 <Link to="/charts">
