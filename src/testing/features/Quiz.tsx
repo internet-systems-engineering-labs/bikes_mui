@@ -4,10 +4,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import { quiz, tTasks } from "../quizData";
 import Matching from './Matching';
+import MultipleChoice from './MultipleChoice';
+import SingleChoice from './SingleChoice';
 import Sorting from './Sorting';
 import { setLists } from './quizSlice';
+import { tQuizzes } from '../quizData';
 
-function getShuffledItems(tasks: tTasks, type: 'M' | 'S') {
+function getShuffledItems(tasks: tTasks, type: 'M' | 'S' | 'O' | 'C') {
+    if (type === 'O' || type === 'C') {
+        return tasks.map(() => '');
+    }
+
     const shuffledAnswers = tasks.map((task) =>
         type === 'M' ? task.answer : task.question
     );
@@ -30,6 +37,30 @@ function getSortingResult(tasks: tTasks, currentList: string[] = []) {
     }, 0);
 }
 
+function getMultipleChoiceResult(tasks: tTasks, currentList: string[] = []) {
+    return tasks.reduce((score, task, taskIndex) => {
+        const correctOptions = task.answer ? task.answer.split(' | ') : [];
+        const selectedOptions = currentList[taskIndex] ? currentList[taskIndex].split(' | ') : [];
+
+        const taskScore = (task.options || []).reduce((count, option) => {
+            const shouldBeChecked = correctOptions.includes(option);
+            const isChecked = selectedOptions.includes(option);
+
+            return count + (shouldBeChecked === isChecked ? 1 : 0);
+        }, 0);
+
+        return score + taskScore;
+    }, 0);
+}
+
+function getMaxScore(quizItem: tQuizzes[number]) {
+    if (quizItem.type === 'C') {
+        return quizItem.tasks.reduce((count, task) => count + (task.options?.length || 0), 0);
+    }
+
+    return quizItem.tasks.length;
+}
+
 function Quiz() {
     const dispatch = useDispatch();
     const answerLists = useSelector((state: RootState) => state.lists.lists);
@@ -39,6 +70,10 @@ function Quiz() {
         const newResults = quiz.map((item, index) => {
             if (item.type === 'S') {
                 return getSortingResult(item.tasks, answerLists[index]);
+            }
+
+            if (item.type === 'C') {
+                return getMultipleChoiceResult(item.tasks, answerLists[index]);
             }
 
             return item.tasks.reduce((count, task, taskIndex) => {
@@ -63,6 +98,8 @@ function Quiz() {
                     </Typography>
                     {item.type === 'M' && <Matching index={index} tasks={item.tasks}/>}
                     {item.type === 'S' && <Sorting index={index} tasks={item.tasks}/>}
+                    {item.type === 'O' && <SingleChoice index={index} tasks={item.tasks}/>}
+                    {item.type === 'C' && <MultipleChoice index={index} tasks={item.tasks}/>}
                 </Box>
             ))}
             <Box sx={{ display: 'flex', justifyContent:'space-around' }}>
@@ -77,9 +114,9 @@ function Quiz() {
                     {results.map((correctCount, index) => (
                         <Typography key={quiz[index].id}>
                             Задание {index + 1}.{' '}
-                            {correctCount === quiz[index].tasks.length
+                            {correctCount === getMaxScore(quiz[index])
                                 ? 'Все ответы верные.'
-                                : `Верных ответов: ${correctCount}.`}
+                                : `Набрано баллов: ${correctCount} из ${getMaxScore(quiz[index])}.`}
                         </Typography>
                     ))}
                 </Box>
