@@ -1,4 +1,4 @@
-import { DndContext, closestCenter } from '@dnd-kit/core';
+import { DndContext, closestCenter, type Modifier } from '@dnd-kit/core';
 import { SortableContext, verticalListSortingStrategy, arrayMove } from '@dnd-kit/sortable';
 import List from '@mui/material/List';
 import { SortableItem } from '../components/SortableItem'
@@ -10,6 +10,25 @@ interface ComponentProps {
     index: number,
     answers: string[];
 }
+
+const restrictToListBounds: Modifier = ({
+    transform,
+    containerNodeRect,
+    draggingNodeRect,
+}) => {
+    if (!draggingNodeRect || !containerNodeRect) {
+        return transform;
+    }
+
+    const minY = containerNodeRect.top - draggingNodeRect.top;
+    const maxY = containerNodeRect.bottom - draggingNodeRect.bottom;
+
+    return {
+        ...transform,
+        x: 0,
+        y: Math.min(Math.max(transform.y, minY), maxY),
+    };
+};
 
 function SortableList({ index, answers }: ComponentProps ) {
     const dispatch = useDispatch();
@@ -26,7 +45,11 @@ function SortableList({ index, answers }: ComponentProps ) {
     };
 
     return (
-        <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+        <DndContext
+            collisionDetection={closestCenter}
+            modifiers={[restrictToListBounds]}
+            onDragEnd={handleDragEnd}
+        >
             <SortableContext items={ draggedItems } strategy={verticalListSortingStrategy}>
                 <List>
                     {draggedItems.map((item) => (
